@@ -15,7 +15,7 @@
 	var timeout;
     function start() {
 
-	  window.location = appurl;
+	 
 	  
       timeout = setTimeout(function(){
                 if(navigator.userAgent.toLowerCase().indexOf("android") > -1) { 
@@ -25,6 +25,7 @@
                 window.open("https://apps.apple.com/hk/app/ibs-smartconnect/id1597180798","_top");
                 }
       }, 1000);
+	 window.location = appurl;
     }
     window.onload = function() {
       start()
