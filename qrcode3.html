@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" media="(device-height: 568px)">
+<title>联合社区</title>
+	
+<script type="text/javascript">
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端 
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
+var isWeixin =  u.indexOf('MicroMessenger') > -1; //是否微信 
+var isQQ = u.match(/\sQQ/i) == " qq"; //是否QQ
+//  	alert('是否是Android：'+isAndroid); 
+//  	alert('是否是iOS：'+isiOS); 
+// alert('we'+isWeixin);
+// alert('isQQ'+isQQ);
+
+</script>
+ </head>
+
+<body>
+<!-- a标签的链接，设置为对应的下载链接；点击打开的动作，在click事件中注册 -->
+<a href="https://apps.apple.com/hk/app/ibs-smartconnect/id1597180798" id="openApp" style="display: none">联合社区</a>
+<a href="" id="openAndroid" style="display: none">联合社区</a>
+<script type="text/javascript">
+
+if(isiOS){
+
+	if(isWeixin){
+		
+	}
+	else if(isQQ){
+		this.location ="http://fir.im/locp";
+	}
+	else{
+	
+  		document.getElementById('openApp').onclick = function(e){
+        	// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+        	// 否则打开a标签的href链接
+        	var ifr = document.createElement('iframe');
+        	ifr.src = 'com.cmcc.LocationPlan://';
+        	ifr.style.display = 'none';
+        	document.body.appendChild(ifr);
+        	window.setTimeout(function(){
+            	document.body.removeChild(ifr);
+        	},3000)
+    	};
+    	document.getElementById('openApp').click();
+
+    }
+}
+ 
+if(isAndroid){
+	// this.location ="http://fir.im/locp";
+	document.getElementById('openAndroid').onclick = function(e){
+        	// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+        	// 否则打开a标签的href链接
+        	var ifr = document.createElement('iframe');
+        	ifr.src = 'com.cmcc.LocationPlan://';
+        	ifr.style.display = 'none';
+        	document.body.appendChild(ifr);
+        	window.setTimeout(function(){
+            	document.body.removeChild(ifr);
+        	},3000)
+    	};
+    	document.getElementById('openAndroid').click(); 
+   
+}
+
+if(isiOS){
+
+	if(isWeixin){
+	
+	}
+	else if(isQQ){
+	
+	}else{
+		clearObject();
+	}
+	
+}else{
+
+	clearObject();
+}
+
+function clearObject(){
+	
+	window.opener=null;
+	window.open('','_self');
+	window.close();
+}
+</script>
+
+<!-- 
+<div id="tips" style="display: ">
+        <span class="">
+          点击右上角菜单<br/>在默认浏览器中打开并安装应用
+        </span>
+        <img height="40" src="@routes.Assets.at("images/short-arrow.png")">
+</div>
+ -->
+
+<div id="msgs" style="display: ">
+        <span class="">
+          点击右上角菜单,在默认浏览器中打开并安装应用
+        </span>
+</div>
+</body>
+</html>
