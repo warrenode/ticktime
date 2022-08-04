@@ -18,6 +18,16 @@ var isQQ = u.match(/\sQQ/i) == " qq"; //是否QQ
 // alert('we'+isWeixin);
 // alert('isQQ'+isQQ);
 
+var myParam = location.search.split('myParam=')[1]
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const type = urlParams.get('type')
+const param1 = urlParams.get('param1')
+
+var appurl = 'bmsscheme://bms?type=' + type + '&param1=' + param1;
+
+	
 </script>
  </head>
 
@@ -41,7 +51,7 @@ if(isiOS){
         	// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
         	// 否则打开a标签的href链接
         	var ifr = document.createElement('iframe');
-        	ifr.src = 'com.cmcc.LocationPlan://';
+        	ifr.src = 'appurl';
         	ifr.style.display = 'none';
         	document.body.appendChild(ifr);
         	window.setTimeout(function(){
