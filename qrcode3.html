@@ -9,40 +9,50 @@
 	
 <script type="text/javascript">
 var u = navigator.userAgent;
-var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端 
-var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
-var isWeixin =  u.indexOf('MicroMessenger') > -1; //是否微信 
-var isQQ = u.match(/\sQQ/i) == " qq"; //是否QQ
-//  	alert('是否是Android：'+isAndroid); 
-//  	alert('是否是iOS：'+isiOS); 
-// alert('we'+isWeixin);
-// alert('isQQ'+isQQ);
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios
+var isWeixin =  u.indexOf('MicroMessenger') > -1; //wechat
 
-var myParam = location.search.split('myParam=')[1]
+    var myParam = location.search.split('myParam=')[1]
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const type = urlParams.get('type')
-const param1 = urlParams.get('param1')
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const type = urlParams.get('type')
+    const param1 = urlParams.get('param1')
 
-var appurl = 'bmsscheme://bms?type=' + type + '&param1=' + param1;
+    var appurl = 'bmsscheme://bms?type=' + type + '&param1=' + param1;
 
-	
+
 </script>
  </head>
 
 <body>
 <!-- a标签的链接，设置为对应的下载链接；点击打开的动作，在click事件中注册 -->
 <a href="https://apps.apple.com/hk/app/ibs-smartconnect/id1597180798" id="openApp" style="display: none">联合社区</a>
-<a href="" id="openAndroid" style="display: none">联合社区</a>
+<a href="https://www.pgyer.com/NyRY" id="openAndroid" style="display: none">联合社区</a>
 <script type="text/javascript">
 
 if(isiOS){
 
-
+	if(isWeixin){
+		
+	}
+	else{
+	
+  		document.getElementById('openApp').onclick = function(e){
+        	// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+        	// 否则打开a标签的href链接
+        	var ifr = document.createElement('iframe');
+        	ifr.src = 'appurl';
+        	ifr.style.display = 'none';
+        	document.body.appendChild(ifr);
+        	window.setTimeout(function(){
+            	document.body.removeChild(ifr);
+        	},3000)
+    	};
     	document.getElementById('openApp').click();
 
-
+    }
 }
  
 if(isAndroid){
@@ -50,7 +60,6 @@ if(isAndroid){
 	document.getElementById('openAndroid').onclick = function(e){
         	// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
         	// 否则打开a标签的href链接
-		alert('create iFrame');
         	var ifr = document.createElement('iframe');
         	ifr.src = 'com.cmcc.LocationPlan://';
         	ifr.style.display = 'none';
@@ -90,7 +99,7 @@ function clearObject(){
 <!-- 
 <div id="tips" style="display: ">
         <span class="">
-          点击右上角菜单<br/>在默认浏览器中打开并安装应用
+          點擊右上角菜單<br/>在默認瀏覽器中打開並安裝應用
         </span>
         <img height="40" src="@routes.Assets.at("images/short-arrow.png")">
 </div>
@@ -98,7 +107,7 @@ function clearObject(){
 
 <div id="msgs" style="display: ">
         <span class="">
-          点击右上角菜单,在默认浏览器中打开并安装应用
+          點擊右上角菜單,在默認瀏覽器中打開並安裝應用
         </span>
 </div>
 </body>
