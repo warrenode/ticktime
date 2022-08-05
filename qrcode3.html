@@ -45,7 +45,7 @@ if(isiOS){
         	// 否则打开a标签的href链接
         	var ifr = document.createElement('iframe');
         	ifr.src = 'bmsscheme://bms?type=' + type + '&param1=' + param1';
-        	ifr.style.display = 'none';
+        	// ifr.style.display = 'none';
         	document.body.appendChild(ifr);
         	window.setTimeout(function(){
             	document.body.removeChild(ifr);
