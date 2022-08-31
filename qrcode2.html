@@ -9,10 +9,10 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    const type = urlParams.get('type')
-    const param1 = urlParams.get('param1')
+    <!-- const type = urlParams.get('type') -->
+    const qrcodeid = urlParams.get('qrcodeid')
     <!-- var appurl = 'bmsscheme://bms?type=' + type + '&param1=' + param1; -->
-    var appurl = 'ibssmartconnect://action?qrcodeid=' + param1;
+    var appurl = 'ibssmartconnect://action?qrcodeid=' + qrcodeid;
     
     <!-- const qrcodeid = urlParams.get('qrcodeid') -->
     <!-- var appurl = 'ibssmartconnect://action?qrcodeid=' + qrcodeid; -->
